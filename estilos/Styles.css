@@ -126,23 +126,35 @@
     text-align: center;
 }
 
-.actividades{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    background-color: #5f5a5a;
-    border-bottom: 1px solid #ccc;
-    margin: 50px;
+/* sectionThree Actividades*/
+/* Estilos de la galería */
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas por fila */
+    gap: 20px; /* Espacio entre las imágenes */
+    padding: 20px;
 }
 
-.img1, .img2, .img3 {
-    height: 10%;
-    width: 10%;
-    margin-bottom: 50px;
-    border-radius: 20px;
-    width: 33.33%;
-    float: left;
-    margin: auto;
+/* Estilo para cada item (imagen y nombre) */
+.item {
+    text-align: center;
+}
 
+.item img {
+    width: 100%;
+    max-width: 450px; /* Ajusta el tamaño según tus necesidades */
+    border-radius: 5px;
+}
+
+.itemQ {
+    width: 100%;
+    height: 33%;
+    border-radius: 5px;
+}
+
+.item p {
+    font-size: 16px;
+    color: #333;
+    margin-top: 8px;
+    font-size: 24px;
 }
