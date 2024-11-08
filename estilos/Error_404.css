@@ -12,9 +12,12 @@ body {
 
 .error-container {
     text-align: center;
-    max-width: 1024px;
+    font-size: small;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
+.error-container1 {
+    max-width: 50%;
+}
 h1 {
     color: #d9534f;
 }
@@ -23,6 +26,7 @@ a {
     text-decoration: none;
     color: #31708f;
     font-weight: bold;
+    margin-top: auto;
 }
 
 a:hover {
