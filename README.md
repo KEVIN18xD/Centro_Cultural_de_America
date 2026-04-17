@@ -1,1 +1,1 @@
-Página de QA para validar funcionaliadd front y estilos
+Página de QA para validar funcionalidad front y estilos
