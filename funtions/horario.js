@@ -86,7 +86,7 @@ function poblarHoraFin() {
   selFin.innerHTML = '<option value="">— Seleccionar —</option>';
   if (!inicioVal) return;
 
-  const idx = SLOTS.findIndex(s => s.id === inicioVal);
+  const idx = SLOTS.findindex(s => s.id === inicioVal);
   SLOTS.slice(idx + 1).forEach(s => {
     const opt = document.createElement('option');
     opt.value = s.id;
@@ -129,13 +129,13 @@ function agregarClase() {
   if (!grado)  { toast('Selecciona el grado', 'error');          return; }
 
   // Detectar conflicto: cualquier clase del mismo día/grado que se solape
-  const slotInicio = SLOTS.findIndex(s => s.id === inicio);
-  const slotFin    = SLOTS.findIndex(s => s.id === fin);
+  const slotInicio = SLOTS.findindex(s => s.id === inicio);
+  const slotFin    = SLOTS.findindex(s => s.id === fin);
 
   const conflicto = clases.find(c => {
     if (c.dia !== dia || c.grado !== grado) return false;
-    const ci = SLOTS.findIndex(s => s.id === c.inicio);
-    const cf = SLOTS.findIndex(s => s.id === c.fin);
+    const ci = SLOTS.findindex(s => s.id === c.inicio);
+    const cf = SLOTS.findindex(s => s.id === c.fin);
     return slotInicio < cf && slotFin > ci;
   });
 
@@ -242,9 +242,9 @@ function renderTabla() {
                     // Ver si esta celda está cubierta por una clase que empezó antes (para ocultar)
                     const cubierta = !clase && clases.some(c => {
                       if (c.dia !== dia || c.grado !== g) return false;
-                      const ci = SLOTS.findIndex(s => s.id === c.inicio);
-                      const cf = SLOTS.findIndex(s => s.id === c.fin);
-                      const si = SLOTS.findIndex(s => s.id === slot.id);
+                      const ci = SLOTS.findindex(s => s.id === c.inicio);
+                      const cf = SLOTS.findindex(s => s.id === c.fin);
+                      const si = SLOTS.findindex(s => s.id === slot.id);
                       return si > ci && si < cf;
                     });
 
@@ -253,8 +253,8 @@ function renderTabla() {
                     // Calcular rowspan
                     let rowspan = 1;
                     if (clase) {
-                      const ci = SLOTS.findIndex(s => s.id === clase.inicio);
-                      const cf = SLOTS.findIndex(s => s.id === clase.fin);
+                      const ci = SLOTS.findindex(s => s.id === clase.inicio);
+                      const cf = SLOTS.findindex(s => s.id === clase.fin);
                       rowspan = Math.max(1, cf - ci);
                     }
 
@@ -356,9 +356,9 @@ function celdaClick(slotId, grado, dia) {
   const ocupada = clases.find(c =>
     c.dia === dia && c.grado === grado &&
     (() => {
-      const ci = SLOTS.findIndex(s => s.id === c.inicio);
-      const cf = SLOTS.findIndex(s => s.id === c.fin);
-      const si = SLOTS.findIndex(s => s.id === slotId);
+      const ci = SLOTS.findindex(s => s.id === c.inicio);
+      const cf = SLOTS.findindex(s => s.id === c.fin);
+      const si = SLOTS.findindex(s => s.id === slotId);
       return si >= ci && si < cf;
     })()
   );
@@ -397,11 +397,11 @@ function drop(e, slotId, grado, dia) {
   if (!c) { dragId = null; return; }
 
   // Calcular duración original en slots
-  const ci = SLOTS.findIndex(s => s.id === c.inicio);
-  const cf = SLOTS.findIndex(s => s.id === c.fin);
+  const ci = SLOTS.findindex(s => s.id === c.inicio);
+  const cf = SLOTS.findindex(s => s.id === c.fin);
   const duracion = cf - ci;
 
-  const niInicio = SLOTS.findIndex(s => s.id === slotId);
+  const niInicio = SLOTS.findindex(s => s.id === slotId);
   const niFin    = niInicio + duracion;
   if (niFin >= SLOTS.length) { toast('No cabe en ese horario', 'error'); dragId = null; return; }
 
@@ -410,8 +410,8 @@ function drop(e, slotId, grado, dia) {
   // Verificar conflicto (ignorando la propia clase)
   const conflicto = clases.find(x => {
     if (x.id === dragId || x.dia !== dia || x.grado !== grado) return false;
-    const xi = SLOTS.findIndex(s => s.id === x.inicio);
-    const xf = SLOTS.findIndex(s => s.id === x.fin);
+    const xi = SLOTS.findindex(s => s.id === x.inicio);
+    const xf = SLOTS.findindex(s => s.id === x.fin);
     return niInicio < xf && niFin > xi;
   });
 
